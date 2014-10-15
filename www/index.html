@@ -21,10 +21,29 @@
         </style>
         <script type="text/javascript" src="cordova.js"></script>
         <script type="text/javascript">
+            function statusRed(reachability) {
+                // There is no consistency on the format of reachability
+                var networkState = reachability.code || reachability;
+
+                var states = {};
+                states[NetworkStatus.NOT_REACHABLE]                      = 'No network connection';
+                states[NetworkStatus.REACHABLE_VIA_CARRIER_DATA_NETWORK] = 'Carrier data connection';
+                states[NetworkStatus.REACHABLE_VIA_WIFI_NETWORK]         = 'WiFi connection';
+
+                // alert('Connection type: ' + states[networkState]);
+
+                if(networkState==NetworkStatus.NOT_REACHABLE){
+                    alert("Debes tener una conexión a internet para utilizar la aplicación");
+                }else{
+                    setTimeout(function(){
+                        window.open('http://demo.reservasydomicilios.com');
+                    },3000)
+                }
+
+            }
+            
             $(document).ready(function(){
-                setTimeout(function(){
-                    window.open('http://demo.reservasydomicilios.com');
-                },3000)
+                navigator.network.isReachable("http://demo.reservasydomicilios.com", statusRed, {});
             });
         </script>
     </body>
