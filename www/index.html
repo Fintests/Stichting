@@ -23,7 +23,8 @@
         <script type="text/javascript">
             $(document).ready(function(){
                 setTimeout(function(){
-                    window.open('http://demo.reservasydomicilios.com');
+                    var ref = window.open('http://demo.reservasydomicilios.com');
+                    ref.addEventListener('loaderror', function(event) { alert('error: ' + event.message); });
                 },3000)
             });
         </script>
