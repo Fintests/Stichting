@@ -30,18 +30,16 @@
                 states[NetworkStatus.REACHABLE_VIA_CARRIER_DATA_NETWORK] = 'Carrier data connection';
                 states[NetworkStatus.REACHABLE_VIA_WIFI_NETWORK]         = 'WiFi connection';
 
-                // alert('Connection type: ' + states[networkState]);
+                alert('Connection type: ' + states[networkState]);
 
                 if(networkState==NetworkStatus.NOT_REACHABLE){
                     alert("Debes tener una conexión a internet para utilizar la aplicación");
                 }else{
-                    setTimeout(function(){
-                        window.open('http://demo.reservasydomicilios.com');
-                    },3000)
+                    window.open('http://demo.reservasydomicilios.com');
                 }
 
             }
-            
+
             $(document).ready(function(){
                 navigator.network.isReachable("http://demo.reservasydomicilios.com", statusRed, {});
             });
