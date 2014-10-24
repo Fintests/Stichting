@@ -24,7 +24,9 @@
             $(document).ready(function(){
                 setTimeout(function(){
                     var ref = window.open('http://demo.reservasydomicilios.com');
-                    ref.addEventListener('loaderror', function(event) { alert('error: ' + event.message); });
+                    ref.addEventListener('loaderror', function(event) { 
+                        alert('error: ' + event.message); 
+                    });
                 },3000)
             });
         </script>
